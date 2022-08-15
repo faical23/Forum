@@ -754,3 +754,311 @@ label span {
   top: 0;
   z-index: 100;
 }
+
+/* Core */
+
+.Core{
+  padding: 50px 6%;
+  background-color: #f6f6f6;
+  display:flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
+.SideBare{
+  margin-bottom: 70px;
+
+}
+.SideBare ::-webkit-scrollbar {
+  background: #e4e4e4 !important ;
+  width: 0.3rem !important;
+}
+.SideBare ::-webkit-scrollbar-thumb {
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB) !important;
+  animation: gradbar 15s ease infinite !important;
+  border-radius: 1rem !important;
+}
+.Core .SideBare h2{
+  text-align: start !important;
+  font-size: 20px;
+  font-weight: 800;
+  
+}
+
+.Core .SideBare li{
+  list-style-type: none;
+  padding: 7px 0px;
+  cursor: pointer;
+  color: #787878;
+  font-weight: 500;
+}
+.Core .SideBare li:hover{
+  color: #3498db;
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 4px;
+}
+.Core .SideBare ul{
+  margin: 20px 0px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+
+
+/* Card */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.card button {
+  outline: none;
+  border: none;
+}
+.card {
+  position: relative;
+  max-width: 18.75rem;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.card-body,
+.card-footer {
+  padding: 1.5em;
+  padding-bottom: 0;
+}
+.card h2{
+  text-align: start;
+  font-size: 20px;
+  font-weight: 700;
+}
+.card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.4s ease;
+}
+.card-thumb {
+  position: relative;
+  height: 200px;
+  transition: height 0.4s ease;
+}
+.card-thumb a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.card:hover .card-thumb {
+  height: calc(200px - 4.5rem);
+}
+
+.card:hover .card-thumb::after {
+  opacity: 0.4;
+}
+.card-date {
+  display: flex;
+  position: absolute;
+  top: -3rem;
+  right: 0;
+  width: fit-content;
+  margin: 1rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #efefef;
+  color: #000;
+  border-radius: 2rem;
+  transition: top 0.4s ease;
+}
+.card-date :first-child {
+  margin-right: 0.25rem;
+  font-size: 0.75rem;
+}
+.card-date :last-child {
+  font-size: 0.75rem;
+}
+.card-category {
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  margin: 0 1rem;
+  padding: 0.25rem 0.75rem;
+  background-color: #4193f7;
+  color: #fff;
+  border-radius: 2rem;
+  z-index: 1;
+  transition: right 0.4s ease;
+}
+.card:hover .card-category {
+  right: 45%;
+}
+.card-subtitle {
+  margin-bottom: 0.75rem;
+  color: rgb(164, 164, 164);
+}
+.card-description {
+  display: block;
+  height: 0;
+  padding: 0 0.5em;
+  font-size: 0.875rem;
+  /* color: rgb(96, 91, 91); */
+  color: #666c74;
+  opacity: 0;
+  transition: height 0.4s ease, opacity 0.2s ease;
+}
+.card:hover .card-description {
+  height: 4.5rem;
+  opacity: 1;
+}
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  background: #fff;
+}
+.card-time i,
+.card-comment i {
+  margin: 0 0.25rem;
+  color: #4193f7;
+}
+.card-time span,
+.card-comment span {
+  font-size: 0.75rem;
+  line-height: 1.875rem;
+  vertical-align: top;
+}
+.card-time {
+  margin-right: 0.5rem;
+}
+.card:hover .card-date {
+  top: 0;
+}
+
+.card p {
+  color: #959595;
+  text-align: center;
+  line-height: 1.6;
+  text-align: start;
+  font-size: 15px;
+}
+
+.Core .Core_Left ,.Core  .Core_Right{
+  text-align: start !important;
+  width:20%;
+  position: sticky;
+  top: 10px;
+  height:100vh;
+  overflow-y:scroll;
+}
+.Core ::-webkit-scrollbar {
+  width: 0rem;
+}
+
+
+
+.Core .Core_Midlle{
+  width: 60%;
+}
+.Core_Midlle .articles img{
+  height: 300px;
+  transition: transform 0.4s ease;
+  OBJECT-FIT: cover;
+}
+.Core_Midlle .articles .card{
+  max-width: 80% !important;
+  border-radius:10px;
+  cursor: pointer;
+}
+.Core_Midlle .articles .card:hover{
+  box-shadow: 0px 0px 11px -7px;
+}
+.Core_Midlle .articles .card .body{
+  padding:20px;
+}
+.Core_Midlle .articles .card .tags{
+  display:flex;
+}
+.Core_Midlle .articles .card .tags li{
+  margin:10px 5px;
+  color:rgb(144, 144, 144)
+}
+.Core_Midlle .articles .card h3{
+  font-size: 23px;
+  font-weight: bold;
+}
+
+.AvatarAndName{
+  display: flex;
+  margin-bottom: 20px;
+  align-items: center;
+}
+.AvatarAndName img{
+  width:50px !important;
+  height:50px !important;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.AvatarAndName h6, .AvatarAndName p{
+  cursor: pointer;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.AvatarAndName p{
+  font-size:14px;
+  position: relative;
+  top:5px;
+}
+.Post__Icons{
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.Post__Icons svg{
+  width:30px;
+  height:30px;
+  cursor: pointer;
+
+}
+.Post__Icons h6{
+  font-size: 20px;
+}
+.Post__Icons .LeftIcons{
+  display: flex;
+  align-items: start !important;
+}
+
+.Post__Icons .LeftIcons h6{
+  margin: 0px 10px;
+  padding:0px;
+}
+.Post__Icons .LeftIcons svg{
+  margin-right:20px ;
+}
+.Post__Icons .Active{
+  fill: red;;
+}
+
+.LeftIcons{
+  display: flex;
+}
+.LeftIcons svg,.LeftIcons.LikeHearet{
+  margin-right:20px ;
+}
+
+.Core_Midlle .articles .card button{
+    padding: 10px 22px;
+    font-size: 17px;
+    border-radius: 6px;
+    margin: 0px 10px;
+}
