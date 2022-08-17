@@ -8,12 +8,14 @@ import SideBare from './Layout/SideBar'
 import Card from './Compnents/Card'
 import Article from './Compnents/Article'
 import ArticleDetails from './Compnents/ContentArticle'
+import Router from './Router'
 
 function App() {
   return (
     <div className="App">
+        <Router/>
           {/* <Login/> */}
-          <NavBar/>
+          {/* <NavBar/> */}
           {/* <div className="Core">
               <div className="Core_Left">
                 <SideBare/>
@@ -53,7 +55,7 @@ function App() {
                 <Card/>
               </div>
           </div> */}
-          <div className="Content_Article">
+          {/* <div className="Content_Article">
               <div className="Content_Article_left">
                   <ArticleDetails/>
               </div>
@@ -62,11 +64,11 @@ function App() {
                   <Card/>
                   <Card/>
               </div>
-          </div>
+          </div> */}
           {/* <Hero/>
           <RecommendedArticle/>
           <PopulareArticle/> */}
-          <Footer/>
+          {/* <Footer/> */}
     </div>
   );
 }
