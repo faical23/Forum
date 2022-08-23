@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import Login from '../Compnents/Login'
 import CreateArticle from '../Compnents/CreateArticle'
 import '../Style/test.scss'
+import { useAppSelector, useAppDispatch } from '../Hooks'
+
 
 
 
@@ -13,6 +15,9 @@ function Navbar(props:any) {
     const [OpenLogin ,SetOpenLogin] = useState<boolean>(false)
     const [OpenCreate ,SetOpenCreate] = useState<boolean>(false)
     const [OpenNotification ,SetOpenNotification] = useState<boolean>(false)
+    const [iSLogin ,SetiSLogin] = useState<boolean>(false)
+    const UserInfo = useAppSelector((state) => state.User)
+
 
 
 
@@ -25,7 +30,7 @@ function Navbar(props:any) {
         {
             OpenLogin &&
             <div className="animated bounceInDown">
-                <Login SetOpenLogin={SetOpenLogin} />
+                <Login SetOpenLogin={SetOpenLogin} iSLogin={iSLogin} SetiSLogin={SetiSLogin} />
             </div>
         }
         {
@@ -146,28 +151,40 @@ function Navbar(props:any) {
                         <span className="bar"></span>
                         <span className="bar"></span>
                         </div>
-                        <ul className="no-search">
+                        <ul className="no-search" style={{width : UserInfo?.name ? "25%" : "20%"}}>
                             <li className="nav-item">
                                 <Link to="/Articles">
                                     Articles
                                 </Link>
                             </li>
-                            <li onClick={()=>{SetOpenCreate(true)}}  className="nav-item Insciption"><a href="#">Create Post</a></li>
-                            <li style={{cursor:'pointer'}} className="nav-item Notification">
-                                <img  onClick={()=>{SetOpenNotification(!OpenNotification)}} src={require('../Style/Img/Notification.png')} alt="" />
-                            </li>
-                            <li className="nav-item Avatar"> 
-                                <Link to="/Profile/736">
-                                    <img src={require('../Style/Img/Avatar.png')} alt="" />
-                                </Link>
-                            </li>
-                            {/* <li  className="nav-item Login"><a href="" onClick={(e)=>{
-                                e.preventDefault();
-                                SetOpenLogin(true)
-                                }}>Log in</a></li>
-                            <li className="nav-item Insciption"><a href="#" onClick={(e)=>{
-                                e.preventDefault();
-                                SetOpenLogin(true)}}>Create Account</a></li> */}
+
+                            {
+                                UserInfo?.name !== "" ?
+                                <>
+                                    <li onClick={()=>{SetOpenCreate(true)}}  className="nav-item Insciption"><a href="#">Create Post</a></li>
+                                    <li style={{cursor:'pointer'}} className="nav-item Notification">
+                                            <img  onClick={()=>{SetOpenNotification(!OpenNotification)}} src={require('../Style/Img/Notification.png')} alt="" />
+                                    </li>
+                                    <li className="nav-item Avatar"> 
+                                            <Link to={'/Profile/'+UserInfo?.id}>
+                                                <img src={require('../Style/Img/Avatar.png')} alt="" />
+                                            </Link>
+                                    </li>
+                                </>
+                                :
+                                <>
+                                    <li  className="nav-item Login"><a href="" onClick={(e)=>{
+                                            e.preventDefault();
+                                            SetOpenLogin(true);
+                                            SetiSLogin(true)
+                                            }}>Log in</a>
+                                    </li>
+                                    <li className="nav-item Insciption"><a href="#" onClick={(e)=>{
+                                            e.preventDefault();
+                                            SetOpenLogin(true)}}>Create Account</a>
+                                    </li>
+                                </>
+                            }
                         </ul>
                     </nav>
                     </div>
