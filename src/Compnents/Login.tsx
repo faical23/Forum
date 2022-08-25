@@ -2,8 +2,8 @@ import { useState,useEffect } from 'react';
 import {User} from '../Interfaces'
 import {UsersApi} from '../ApiCall'
 import axios from 'axios'
-import { toast } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css';
+import Alert from '../Compnents/Alert'
+
 
 import { useAppSelector, useAppDispatch } from '../Hooks'
 
@@ -12,7 +12,6 @@ import {getUserDara,ClearUser}  from '../Features/User'
 
 const Login = (props:any) =>{
 
-    const UserInfo = useAppSelector((state) => state.User)
     const dispatch = useAppDispatch()
 
 
@@ -29,12 +28,12 @@ const Login = (props:any) =>{
         SetUserData(newState)
     }
 
-    
     const Inscription = () =>{
         if(UserData.email !== "" && UserData.name !== "" && UserData.password !== "" ){
             axios.post<User>("http://localhost:3000"+UsersApi,UserData)
             .then(res =>{
                 dispatch(getUserDara(res.data))
+                props.SetSuccessLogin(true)
                 props.SetOpenLogin(false);
                 props.SetiSLogin(false)
             })
@@ -43,7 +42,29 @@ const Login = (props:any) =>{
         else{}
     }
 
+    const LoginUser= () =>{
+        console.log("login => "  , UserData)
+        if(UserData.email !== ""  && UserData.password !== "" ){
+            axios.get("http://localhost:3000"+UsersApi+"?email="+UserData.email+"&password="+UserData.password)
+            .then(res =>{
+                if(res.data.length){
+                    dispatch(getUserDara(res.data[0]))
+                    props.SetSuccessLogin(true)
+                }
+                else{
+                    props.SetErrorLogin(true)
+                }
+                props.SetOpenLogin(false);
+                props.SetiSLogin(false)
+            })
+            .catch(err =>{})
+        }
+        else{}
+    }
+    const AUthentification = () => {!props.iSLogin ? Inscription() : LoginUser() }
+
     return (
+        <>        
             <div className="container" style={{width: "400px",height: "500px"}}>
                 <span className="error animated tada" id="msg"></span>
                 <img  onChange={()=>{
@@ -60,10 +81,11 @@ const Login = (props:any) =>{
                     <input  onChange={(e)=>{GetData('password',e.target?.value)}}  type="password" name="password" placeholder="Passsword" id="pwd" />
                     <input onClick={(e)=>{
                         e.preventDefault();
-                        Inscription();
+                        AUthentification()
                     }} type="submit" value="Sign in" className="btn1" />
                 </form>
             </div> 
+        </>
     )
 }
 

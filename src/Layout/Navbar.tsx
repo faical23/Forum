@@ -7,6 +7,7 @@ import Login from '../Compnents/Login'
 import CreateArticle from '../Compnents/CreateArticle'
 import '../Style/test.scss'
 import { useAppSelector, useAppDispatch } from '../Hooks'
+import Alert from '../Compnents/Alert'
 
 
 
@@ -16,10 +17,9 @@ function Navbar(props:any) {
     const [OpenCreate ,SetOpenCreate] = useState<boolean>(false)
     const [OpenNotification ,SetOpenNotification] = useState<boolean>(false)
     const [iSLogin ,SetiSLogin] = useState<boolean>(false)
+    const [SuccessLogin,SetSuccessLogin] = useState<boolean>(false)
+    const [ErrorLogin,SetErrorLogin] = useState<boolean>(false)
     const UserInfo = useAppSelector((state) => state.User)
-
-
-
 
   return (
     <>
@@ -30,9 +30,11 @@ function Navbar(props:any) {
         {
             OpenLogin &&
             <div className="animated bounceInDown">
-                <Login SetOpenLogin={SetOpenLogin} iSLogin={iSLogin} SetiSLogin={SetiSLogin} />
+                <Login SetErrorLogin={SetErrorLogin} SetOpenLogin={SetOpenLogin} iSLogin={iSLogin} SetiSLogin={SetiSLogin} SetSuccessLogin={SetSuccessLogin} />
             </div>
         }
+        {SuccessLogin && <Alert color="lime" message='Success Login' />}
+        {ErrorLogin && <Alert color="red" message='Email or password incorrect' />}
         {
             OpenNotification &&
                     <div className="NotificationBox">
@@ -131,8 +133,8 @@ function Navbar(props:any) {
                     </div>
 
         }
-
         <div className="Navbar">
+
                 <div className="page-wrapper">
                     <div className="nav-wrapper">
                     <div className="grad-bar"></div>
@@ -157,7 +159,6 @@ function Navbar(props:any) {
                                     Articles
                                 </Link>
                             </li>
-
                             {
                                 UserInfo?.name !== "" ?
                                 <>
@@ -190,52 +191,6 @@ function Navbar(props:any) {
                     </div>
                 </div>
         </div>
-        {/* <header>
-<div className = "icons">
-    <div className = "notification">
-    <a href = "#">
-    <div className = "notBtn" >
-        <div className = "number">2</div>
-        <i className="fas fa-bell"></i>
-        <div className = "box">
-            <div className = "display">
-            <div className = "cont">
-                <div className = "sec new">
-                <a href = "https://codepen.io/Golez/">
-                <div className = "profCont">
-                <img className = "profile" src = "https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg" />
-                    </div>
-                <div className = "txt">James liked your post: "Pure css notification box"</div>
-                <div className = "txt sub">11/7 - 2:30 pm</div>
-                </a>
-                </div>
-                <div className = "sec new">
-                <a href = "https://codepen.io/Golez/">
-                <div className = "profCont">
-                <img className = "profile" src = "https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ" />
-                    </div>
-                <div className = "txt">Annita liked your post: "Pure css notification box"</div>
-                <div className = "txt sub">11/7 - 2:13 pm</div>
-                </a>
-                </div>
-                <div className = "sec">
-                <a href = "https://codepen.io/Golez/">
-                <div className = "profCont">
-                <img className = "profile" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3O45RK9qyCrZJivYsY6PmeVEJH07l7bkoolJmscBsNjzump27"/>
-                    </div>
-                <div className = "txt">Brie liked your post: "Pure css notification box"</div>
-                <div className = "txt sub">11/6 - 9:35 pm</div>
-                </a>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-        </a>
-    </div>
-</div>
-        </header> */}
-
     </>
   );
 }

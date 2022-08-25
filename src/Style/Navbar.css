@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     margin: 0;
     padding: 0;
@@ -568,7 +572,7 @@
 
 .container{
   margin: 0;
-  top: 50px;
+  top: 25px;
   left: 50%;
   position: absolute;
   text-align: center;
@@ -578,7 +582,7 @@
   border-top: 10px solid #79a6fe;
   border-bottom: 10px solid #8BD17C;
   width: 500px;
-  height: 760px;
+  height: 800px;
   box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
 }
 
@@ -1565,3 +1569,22 @@ a {
 
 
 /* NOTIFICATION */
+
+.go3450369076{
+  width:100% !important;
+  padding:10px !important;
+  background-color:white !important;
+}
+.rti--container{
+  display:block !important;
+  text-align:start !important;
+  width: 90%;
+  margin: 0px auto;
+  border: none !important;
+}
+.go2286398182{
+  margin:10px !important;
+}
+.AddImgArticle{
+  text-align: -webkit-center;
+}

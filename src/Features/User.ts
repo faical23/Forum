@@ -34,6 +34,6 @@ export const UserSlice = createSlice({
 export const {getUserDara,ClearUser} = UserSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const UserInfo = (state: RootState) => state.User
+export const UserInfor = (state: RootState) => state.User
 
 export default UserSlice.reducer
